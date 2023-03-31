@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { Center, Collapse, Grid, GridItem } from "@chakra-ui/react";
 import { Game } from "./features/Game";
-// import { useStopwatch } from "./hooks/useStopWatch";
+import { useStopwatch } from "./hooks/useStopwatch";
 
 function App() {
   const [scene, setScene] = useState<Scene>("game");
-  // const { time, stop, reset } = useStopwatch();
+  const { time, stop, reset } = useStopwatch();
 
-  // useEffect(() => {
-  //   if (scene === "game") reset();
-  //   else stop();
-  // }, [scene]);
+  useEffect(() => {
+    if (scene === "game") reset();
+    else stop();
+  }, [scene]);
 
-  // const timeString = (time / 1000 - 4).toFixed(2);
+  const timeString = (time / 1000 - 4).toFixed(2);
 
   return (
     <Grid
@@ -29,7 +29,7 @@ function App() {
           <Game setScene={setScene} />
         </Collapse>
         <Collapse in={scene === "result"} animateOpacity unmountOnExit>
-          {/* クリアタイム：{timeString} 秒 */}
+          クリアタイム：{timeString} 秒
         </Collapse>
       </GridItem>
     </Grid>
