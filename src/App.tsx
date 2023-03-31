@@ -23,8 +23,6 @@ function App() {
       gridTemplateRows={"50px auto"}
       justifyItems="center"
       backgroundImage={`${r(0, 3)}.jpg`}
-      backgroundColor="rgba(255,255,255,0.8)"
-      backgroundBlendMode="lighten"
       backgroundSize="auto"
     >
       <GridItem bg="pink.100" fontSize="20px" fontWeight="bold" w="100%">
