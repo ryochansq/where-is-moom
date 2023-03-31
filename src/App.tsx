@@ -3,6 +3,9 @@ import { Center, Collapse, Grid, GridItem } from "@chakra-ui/react";
 import { Game } from "./features/Game";
 import { useStopwatch } from "./hooks/useStopwatch";
 
+const r = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min) + min);
+
 function App() {
   const [scene, setScene] = useState<Scene>("game");
   const { time, stop, reset } = useStopwatch();
@@ -20,8 +23,12 @@ function App() {
       templateAreas={`"header""main"`}
       gridTemplateRows={"50px auto"}
       justifyItems="center"
+      backgroundImage={`${r(0, 3)}.jpg`}
+      backgroundColor="rgba(255,255,255,0.8)"
+      backgroundBlendMode="lighten"
+      backgroundSize="auto"
     >
-      <GridItem bg="orange.300" fontWeight="bold" w="100%">
+      <GridItem bg="pink.100" fontSize="20px" fontWeight="bold" w="100%">
         <Center h="100%">MOO"M" をさがせ！</Center>
       </GridItem>
       <GridItem p="8px" maxW="md">
