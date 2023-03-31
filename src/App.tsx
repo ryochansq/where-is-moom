@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Center, Collapse, Grid, GridItem } from "@chakra-ui/react";
 import { Game } from "./features/Game";
 import { useStopwatch } from "./hooks/useStopwatch";
+import { Result } from "./features/Result";
 
 const r = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min) + min);
@@ -14,8 +15,6 @@ function App() {
     if (scene === "game") reset();
     else stop();
   }, [scene]);
-
-  const timeString = (time / 1000 - 4).toFixed(2);
 
   return (
     <Grid
@@ -36,7 +35,7 @@ function App() {
           <Game setScene={setScene} />
         </Collapse>
         <Collapse in={scene === "result"} animateOpacity unmountOnExit>
-          クリアタイム：{timeString} 秒
+          <Result setScene={setScene} time={time} />
         </Collapse>
       </GridItem>
     </Grid>
