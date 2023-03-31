@@ -53,15 +53,16 @@ export const Game = ({ setScene }: Props) => {
           .fill(0)
           .map((_, i) =>
             i + 1 < count ? (
-              <CheckCircleIcon color="green.400" />
+              <CheckCircleIcon color="green.400" key={i} />
             ) : (
-              <MinusIcon />
+              <MinusIcon key={i} />
             )
           )}
       </HStack>
       <SimpleGrid maxH="100%" columns={count} spacing="0.5">
-        {moons.map((v) => (
+        {moons.map((v, i) => (
           <Button
+            key={i}
             h={`calc((100vh - 300px) / ${rows(count)})`}
             maxW="200px"
             maxH="80px"
