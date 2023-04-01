@@ -1,5 +1,6 @@
 import { Button, Center, Collapse, Flex, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useReward } from "react-rewards";
 import { Footer } from "../components/Footer";
 
 type Props = {
@@ -9,15 +10,18 @@ type Props = {
 
 export const Result = ({ setScene, time }: Props) => {
   const [fade, setFade] = useState([false, false, false]);
+  const { reward } = useReward("rewardId", "confetti");
 
   useEffect(() => {
     const id1 = setTimeout(() => setFade([true, false, false]), 300);
     const id2 = setTimeout(() => setFade([true, true, false]), 700);
     const id3 = setTimeout(() => setFade([true, true, true]), 1100);
+    const confetti = setTimeout(reward, 1200);
     return () => {
       clearTimeout(id1);
       clearTimeout(id2);
       clearTimeout(id3);
+      clearTimeout(confetti);
     };
   }, []);
 
@@ -65,6 +69,7 @@ export const Result = ({ setScene, time }: Props) => {
         </Flex>
         <Footer />
       </Collapse>
+      <Center id="rewardId" />
     </>
   );
 };
